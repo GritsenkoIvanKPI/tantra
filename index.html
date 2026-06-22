@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo de Tantra — Relax Center | Sitges, Barcelona</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            crimson: { DEFAULT: '#9A1E14', light: '#B82A1E', dark: '#7A170F', deep: '#5A100A' },
+            copper: { DEFAULT: '#E37634', light: '#F09050', dark: '#C45E20' },
+            gold: { DEFAULT: '#C9A84C', light: '#E0C878', dark: '#A08030', pale: '#D4B86A' },
+            surface: { base: '#0A0404', elevated: '#140A08', floating: '#1E100C', card: '#1A0C0A' }
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Nunito Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;1,6..12,300;1,6..12,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: #0A0404;
+      color: #E8DDD0;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: -0.03em;
+    }
+
+    .grain { position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .bg-glow {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(154,30,20,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 60%, rgba(227,118,52,0.06) 0%, transparent 60%);
+    }
+    .bg-glow-alt {
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 30%, rgba(154,30,20,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 70% 70%, rgba(201,168,76,0.05) 0%, transparent 60%);
+    }
+
+    /* Scroll-triggered reveals */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.v { opacity: 1; transform: translateY(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-scale.v { opacity: 1; transform: scale(1); }
+    .reveal-left { opacity: 0; transform: translateX(-60px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-left.v { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(60px); transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+    .reveal-right.v { opacity: 1; transform: translateX(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, #9A1E14, #B82A1E);
+      box-shadow: 0 4px 24px rgba(154,30,20,0.35), 0 2px 8px rgba(154,30,20,0.2);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(154,30,20,0.45), 0 4px 12px rgba(154,30,20,0.3); }
+    .btn-primary:focus-visible { outline: 2px solid #E37634; outline-offset: 3px; }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      border: 1px solid rgba(201,168,76,0.4);
+      color: #D4B86A;
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.3s ease, border-color 0.3s ease;
+    }
+    .btn-outline:hover { background: rgba(201,168,76,0.08); border-color: #C9A84C; transform: translateY(-2px); }
+    .btn-outline:focus-visible { outline: 2px solid #E37634; outline-offset: 3px; }
+    .btn-outline:active { transform: translateY(0); }
+
+    /* Nav */
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link::after { content:''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: #E37634; transition: width 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+    .nav-link:hover { color: #E37634; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:focus-visible { outline: 1px solid #E37634; outline-offset: 4px; }
+
+    .lang-btn { transition: color 0.3s ease, border-color 0.3s ease; }
+    .lang-btn:hover { color: #E37634; border-color: #E37634; }
+    .lang-btn.active { color: #E37634; border-color: #E37634; }
+    .lang-btn:focus-visible { outline: 1px solid #E37634; outline-offset: 2px; }
+
+    /* Horizontal marquee */
+    .marquee-track {
+      display: flex;
+      gap: 16px;
+      animation: marquee 40s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Image hover */
+    .img-hover { overflow: hidden; }
+    .img-hover img, .img-hover video { transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .img-hover:hover img, .img-hover:hover video { transform: scale(1.05); }
+
+    /* Cards */
+    .service-block { transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+    .service-block:hover { transform: translateY(-6px); }
+    .service-block:active { transform: translateY(-2px); }
+
+    .review-card { transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+    .review-card:hover { transform: translateY(-4px); }
+
+    .staff-card { transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+    .staff-card:hover { transform: translateY(-8px); }
+
+    .calendar-card { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease; }
+    .calendar-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(154,30,20,0.2); }
+
+    /* Form */
+    input, textarea, select { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+    input:focus, textarea:focus, select:focus { border-color: #C9A84C !important; box-shadow: 0 0 0 3px rgba(201,168,76,0.12); outline: none; }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; z-index: 10000; background: rgba(10,4,4,0.96); display: none; align-items: center; justify-content: center; cursor: pointer; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 16px; }
+
+    /* Mobile menu */
+    @media (max-width: 768px) {
+      .mob-menu { display: none; }
+      .mob-menu.open { display: flex; }
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #C9A84C; transition: transform 0.3s ease, opacity 0.3s ease; }
+
+    /* Divider */
+    .sep { display: flex; align-items: center; gap: 14px; max-width: 320px; margin: 0 auto; }
+    .sep::before, .sep::after { content:''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent); }
+    .sep-dot { width: 6px; height: 6px; background: #C9A84C; transform: rotate(45deg); flex-shrink: 0; }
+
+    /* Parallax images */
+    .parallax-img { transition: transform 0.1s linear; }
+
+    /* Video overlay */
+    .video-wrap { position: relative; }
+    .video-wrap::after { content:''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,4,4,0.5) 0%, transparent 40%); border-radius: inherit; pointer-events: none; }
+
+    /* Hero service slider glassmorphism card */
+    .hero-glass {
+      background: rgba(30, 16, 12, 0.45);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(201,168,76,0.12);
+    }
+    .hero-slider-img {
+      transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .hero-slider-text {
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .slider-arrow {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #D4B86A;
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer;
+    }
+    .slider-arrow:hover { background: rgba(201,168,76,0.1); border-color: #C9A84C; transform: scale(1.08); }
+    .slider-arrow:focus-visible { outline: 2px solid #E37634; outline-offset: 2px; }
+    .slider-arrow:active { transform: scale(0.95); }
+
+    .hero-vertical-line {
+      width: 1px;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.25), transparent);
+    }
+  </style>
+</head>
+<body class="bg-surface-base">
+<div class="grain"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-base/60 backdrop-blur-xl">
+  <div class="max-w-[1400px] mx-auto px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      <!-- Logo left -->
+      <a href="#" class="flex items-center gap-2.5 flex-shrink-0">
+        <img src="fwd/LOGOtANTRA.png" alt="Mundo de Tantra" class="w-9 h-9">
+        <span class="font-display text-gold-light text-base sm:text-lg tracking-[0.12em] uppercase">Tantra</span>
+      </a>
+      <!-- Nav center -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Home</a>
+        <a href="#services" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Services</a>
+        <a href="#events" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Events</a>
+        <a href="#gallery" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Gallery</a>
+        <a href="#reviews" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Reviews</a>
+        <a href="#contact" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Contact</a>
+      </nav>
+      <!-- CTA + lang right -->
+      <div class="hidden md:flex items-center gap-4">
+        <div class="flex items-center gap-1">
+          <button class="lang-btn active text-[10px] border border-transparent px-1.5 py-0.5 tracking-wider uppercase font-body" data-lang="en">EN</button>
+          <button class="lang-btn text-[10px] border border-transparent px-1.5 py-0.5 tracking-wider uppercase font-body text-gold-pale/40" data-lang="es">ES</button>
+          <button class="lang-btn text-[10px] border border-transparent px-1.5 py-0.5 tracking-wider uppercase font-body text-gold-pale/40" data-lang="ru">RU</button>
+        </div>
+        <a href="#booking" class="btn-outline px-6 py-2.5 text-[12px] tracking-[0.1em] uppercase font-body font-medium rounded-full">Book an Appointment</a>
+      </div>
+      <button class="md:hidden hamburger flex flex-col gap-1.5 p-2" onclick="document.getElementById('mobMenu').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobMenu" class="mob-menu md:hidden flex-col bg-surface-elevated/95 backdrop-blur-xl border-t border-gold/8 px-6 py-5 gap-3">
+    <a href="#services" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Services</a>
+    <a href="#booking" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Booking</a>
+    <a href="#events" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Events</a>
+    <a href="#gallery" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Gallery</a>
+    <a href="#reviews" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Reviews</a>
+    <a href="#contact" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Contact</a>
+    <div class="flex gap-2 pt-3 border-t border-gold/8">
+      <button class="lang-btn active text-[10px] border border-transparent px-2 py-1 tracking-wider uppercase" data-lang="en">EN</button>
+      <button class="lang-btn text-[10px] border border-transparent px-2 py-1 tracking-wider uppercase text-gold-pale/40" data-lang="es">ES</button>
+      <button class="lang-btn text-[10px] border border-transparent px-2 py-1 tracking-wider uppercase text-gold-pale/40" data-lang="ru">RU</button>
+    </div>
+    <a href="#booking" class="btn-outline text-center px-6 py-2.5 text-[11px] tracking-[0.1em] uppercase font-body font-medium rounded-full mt-2">Book an Appointment</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="relative h-screen min-h-[700px] overflow-hidden">
+  <!-- Full-bleed video background -->
+  <div class="absolute inset-0 z-0">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="photo content/IMG_5662.MP4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-base/80 via-surface-base/20 to-surface-base/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-surface-base/50 to-transparent"></div>
+  </div>
+
+  <!-- Hero content overlay -->
+  <div class="relative z-10 h-full max-w-[1400px] mx-auto px-5 sm:px-8 flex items-end pb-14 lg:pb-16">
+    <div class="w-full flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
+
+      <!-- Bottom-left: stats + heading -->
+      <div class="max-w-2xl reveal">
+        <!-- Trust stats -->
+        <div class="flex items-center gap-4 mb-4">
+          <span class="font-display text-3xl text-gold-light font-medium">2k+</span>
+          <span class="text-[13px] text-gold-pale/60 font-body">Individuals who have trusted us.</span>
+        </div>
+        <!-- Stars + avatars -->
+        <div class="flex items-center gap-4 mb-7">
+          <div class="flex gap-0.5">
+            <svg class="w-5 h-5 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <!-- Avatar stack -->
+          <div class="flex -space-x-2">
+            <div class="w-8 h-8 rounded-full border-2 border-surface-base overflow-hidden"><img src="photo content/photo_27_2026-06-18_12-22-32.jpg" alt="" class="w-full h-full object-cover"></div>
+            <div class="w-8 h-8 rounded-full border-2 border-surface-base overflow-hidden"><img src="photo content/photo_4_2026-06-18_12-22-32.jpg" alt="" class="w-full h-full object-cover object-top"></div>
+            <div class="w-8 h-8 rounded-full border-2 border-surface-base overflow-hidden"><img src="photo content/photo_12_2026-06-18_12-22-32.jpg" alt="" class="w-full h-full object-cover object-top"></div>
+            <div class="w-8 h-8 rounded-full border-2 border-surface-base overflow-hidden"><img src="photo content/photo_28_2026-06-18_12-22-32.jpg" alt="" class="w-full h-full object-cover object-top"></div>
+          </div>
+        </div>
+        <!-- Main heading -->
+        <h1 class="font-display text-[44px] sm:text-[56px] lg:text-[68px] xl:text-[76px] font-light text-white leading-[1.0] mb-4 tracking-tight">
+          Your Sensual Ritual of<br>The Body and Mind
+        </h1>
+        <p class="text-[14px] text-gold-pale/55 font-body tracking-wide">A New Dimension of Wellness</p>
+      </div>
+
+      <!-- Bottom-right: vertical line + glassmorphism service card -->
+      <div class="flex items-end gap-6 reveal-right stagger-2">
+        <!-- Vertical line -->
+        <div class="hero-vertical-line hidden lg:block"></div>
+        <!-- Glassmorphism service slider -->
+        <div class="hero-glass rounded-[20px] p-4 sm:p-5 w-full lg:w-[380px]" id="heroSlider">
+          <div class="flex gap-4 items-start mb-5">
+            <!-- Slider image -->
+            <div class="w-[110px] h-[100px] rounded-[14px] overflow-hidden flex-shrink-0">
+              <img id="sliderImg" src="photo content/photo_22_2026-06-18_12-22-32.jpg" alt="" class="hero-slider-img w-full h-full object-cover">
+            </div>
+            <!-- Slider text -->
+            <div>
+              <h3 id="sliderTitle" class="font-display text-xl text-gold-light hero-slider-text">Tantric Massage</h3>
+              <p id="sliderDesc" class="text-[11px] text-gold-pale/45 font-body mt-1 leading-relaxed hero-slider-text">Sacred touch ritual for deep healing and connection.</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex gap-2.5">
+              <button class="slider-arrow" onclick="heroSlide(-1)" aria-label="Previous">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <button class="slider-arrow" onclick="heroSlide(1)" aria-label="Next">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+            <a href="#services" class="bg-surface-card/80 hover:bg-surface-floating text-gold-pale text-[12px] font-body tracking-wide px-5 py-2.5 rounded-lg transition-colors duration-300 border border-gold/10">Explore Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== ABOUT / INTRO ===== -->
+<section class="py-24 sm:py-36 bg-glow-alt">
+  <div class="max-w-[1100px] mx-auto px-5 sm:px-8">
+    <!-- Centered description paragraph -->
+    <div class="text-center mb-16 reveal">
+      <p class="font-display text-[22px] sm:text-[28px] lg:text-[32px] text-gold-pale/80 leading-[1.6] font-light">
+        Our tantra and relaxation studio is dedicated to helping you unwind,
+        reconnect, and awaken your inner energy. Through personalized rituals,
+        expert techniques, and a sensual atmosphere, we create experiences
+        that nurture both body and mind. From tantric massage to Thai healing,
+        every service is designed to leave you renewed and transformed.
+      </p>
+    </div>
+
+    <!-- Large image with stats overlay -->
+    <div class="relative rounded-[28px] overflow-hidden reveal-scale">
+      <div class="aspect-[16/9] sm:aspect-[2/1]">
+        <img src="photo content/photo_24_2026-06-18_12-22-32.jpg" alt="Our atmosphere" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-surface-base/90 via-surface-base/30 to-transparent"></div>
+      </div>
+      <!-- Stats bar overlaid at bottom -->
+      <div class="absolute bottom-0 left-0 right-0 px-6 sm:px-12 lg:px-20 pb-8 sm:pb-12">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-4">
+          <div class="text-center">
+            <p class="font-display text-4xl sm:text-5xl lg:text-6xl text-white/90 font-light">10+</p>
+            <p class="text-[11px] sm:text-xs text-gold-pale/50 tracking-[0.15em] uppercase font-body mt-2">Years Experience</p>
+          </div>
+          <div class="text-center">
+            <p class="font-display text-4xl sm:text-5xl lg:text-6xl text-white/90 font-light">2K+</p>
+            <p class="text-[11px] sm:text-xs text-gold-pale/50 tracking-[0.15em] uppercase font-body mt-2">Clients</p>
+          </div>
+          <div class="text-center">
+            <p class="font-display text-4xl sm:text-5xl lg:text-6xl text-white/90 font-light">98%</p>
+            <p class="text-[11px] sm:text-xs text-gold-pale/50 tracking-[0.15em] uppercase font-body mt-2">Satisfaction</p>
+          </div>
+          <div class="text-center">
+            <p class="font-display text-4xl sm:text-5xl lg:text-6xl text-white/90 font-light">9+</p>
+            <p class="text-[11px] sm:text-xs text-gold-pale/50 tracking-[0.15em] uppercase font-body mt-2">Treatments</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="py-24 sm:py-32 bg-glow">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-16 reveal">
+      <p class="text-copper text-xs tracking-[0.3em] uppercase font-body mb-3">What We Offer</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-gold-light font-light mb-5">Therapies & Treatments</h2>
+      <div class="sep"><div class="sep-dot"></div></div>
+    </div>
+
+    <!-- Service 1: Tantric - image left -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 reveal">
+      <div class="rounded-[24px] overflow-hidden img-hover aspect-[4/3]">
+        <img src="photo content/photo_22_2026-06-18_12-22-32.jpg" alt="Tantric Massage" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <span class="text-copper text-xs tracking-[0.3em] uppercase font-body">01</span>
+        <h3 class="font-display text-3xl sm:text-4xl text-gold-light font-light mt-2 mb-4">Tantric Massage</h3>
+        <p class="text-xs text-gold-pale/40 tracking-wider uppercase font-body mb-4">Shiva &middot; For Men &middot; from &euro;150</p>
+        <p class="font-body text-sm text-gold-pale/55 leading-relaxed mb-6">
+          A very sensual and intimate massage that releases blockages and tensions. The affectionate
+          way this massage is given opens up the heart and gives the ability to love deeply. Through
+          this massage you can learn to spread sexual energy into your whole body.
+        </p>
+        <a href="#booking" class="btn-outline inline-block px-7 py-3 text-xs tracking-[0.15em] uppercase font-body rounded-full">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Service 2: Couples - image right -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 reveal">
+      <div class="order-2 lg:order-1">
+        <span class="text-copper text-xs tracking-[0.3em] uppercase font-body">02</span>
+        <h3 class="font-display text-3xl sm:text-4xl text-gold-light font-light mt-2 mb-4">Couples Massage</h3>
+        <p class="text-xs text-gold-pale/40 tracking-wider uppercase font-body mb-4">Shakti + Shiva &middot; from &euro;300</p>
+        <p class="font-body text-sm text-gold-pale/55 leading-relaxed mb-6">
+          Discover your partner anew. Two therapists will massage you simultaneously in one room.
+          The common experience may be unique and very deep. You will be surprised how you now
+          perceive each other — your hearts prepared to give and receive mutual love.
+        </p>
+        <a href="#booking" class="btn-outline inline-block px-7 py-3 text-xs tracking-[0.15em] uppercase font-body rounded-full">Book Now</a>
+      </div>
+      <div class="order-1 lg:order-2 rounded-[24px] overflow-hidden img-hover aspect-[4/3]">
+        <img src="photo content/photo_14_2026-06-18_12-22-32.jpg" alt="Couples Massage" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <!-- Service 3: Dance of Energies - image left -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 reveal">
+      <div class="rounded-[24px] overflow-hidden img-hover aspect-[4/3]">
+        <img src="photo content/photo_19_2026-06-18_12-22-32.jpg" alt="Dance of Energies" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <span class="text-copper text-xs tracking-[0.3em] uppercase font-body">03</span>
+        <h3 class="font-display text-3xl sm:text-4xl text-gold-light font-light mt-2 mb-4">Dance of Energies</h3>
+        <p class="text-xs text-gold-pale/40 tracking-wider uppercase font-body mb-4">Tantric Techniques &middot; from &euro;180</p>
+        <p class="font-body text-sm text-gold-pale/55 leading-relaxed mb-6">
+          A sensual massage about the dance of feminine and masculine energies. Based on tantric
+          techniques with renewed energy and a new state of mind. It's about the states that arise
+          from accepting your nature and the laws of energy movement.
+        </p>
+        <a href="#booking" class="btn-outline inline-block px-7 py-3 text-xs tracking-[0.15em] uppercase font-body rounded-full">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Service cards grid: remaining services -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+      <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
+        <div class="aspect-[4/3] img-hover"><img src="photo content/photo_12_2026-06-18_12-22-32.jpg" alt="Shakti Massage" class="w-full h-full object-cover"></div>
+        <div class="p-6">
+          <h4 class="font-display text-xl text-gold-light mb-1">Shakti Massage</h4>
+          <p class="text-[10px] text-gold-pale/40 tracking-wider uppercase font-body mb-3">For Women &middot; from &euro;150</p>
+          <p class="text-xs text-gold-pale/50 font-body leading-relaxed">Light-as-a-feather strokes awakening heart energies. Deeply relaxing, deeply healing.</p>
+        </div>
+      </div>
+      <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
+        <div class="aspect-[4/3] img-hover"><img src="photo content/photo_28_2026-06-18_12-22-32.jpg" alt="Erotic Thai Massage" class="w-full h-full object-cover"></div>
+        <div class="p-6">
+          <h4 class="font-display text-xl text-gold-light mb-1">Thai Massage</h4>
+          <p class="text-[10px] text-gold-pale/40 tracking-wider uppercase font-body mb-3">Three-in-One &middot; 90 min &middot; &euro;150</p>
+          <p class="text-xs text-gold-pale/50 font-body leading-relaxed">Classical, erotic and original Thai massage combined into one 90-minute experience.</p>
+        </div>
+      </div>
+      <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
+        <div class="aspect-[4/3] img-hover">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover"><source src="photo content/IMG_5669.MP4" type="video/mp4"></video>
+        </div>
+        <div class="p-6">
+          <h4 class="font-display text-xl text-gold-light mb-1">Sauna & Spa</h4>
+          <p class="text-[10px] text-gold-pale/40 tracking-wider uppercase font-body mb-3">Jacuzzi &middot; Tea Ceremony &middot; from &euro;80</p>
+          <p class="text-xs text-gold-pale/50 font-body leading-relaxed">Complete relaxation with sauna, jacuzzi and traditional tea ceremony.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section id="booking" class="py-24 sm:py-32 bg-glow-alt">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="reveal-left hidden lg:block">
+        <div class="rounded-[28px] overflow-hidden img-hover aspect-[3/4] max-h-[680px]">
+          <img src="photo content/photo_5_2026-06-18_12-22-32.jpg" alt="Book your experience" class="w-full h-full object-cover">
+        </div>
+      </div>
+      <div class="reveal-right">
+        <p class="text-copper text-xs tracking-[0.3em] uppercase font-body mb-3">Reserve Your Experience</p>
+        <h2 class="font-display text-4xl sm:text-5xl text-gold-light font-light mb-5">Book a Session</h2>
+        <div class="sep mb-10" style="margin-left:0; margin-right:auto;"><div class="sep-dot"></div></div>
+        <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <div>
+              <label class="block text-[10px] tracking-[0.15em] uppercase text-gold-pale/50 font-body mb-2">Full Name</label>
+              <input type="text" required class="w-full bg-surface-base border border-gold/12 rounded-xl px-4 py-3 text-gold-pale font-body text-sm placeholder-gold-pale/25" placeholder="Your name">
+            </div>
+            <div>
+              <label class="block text-[10px] tracking-[0.15em] uppercase text-gold-pale/50 font-body mb-2">Phone / WhatsApp</label>
+              <input type="tel" required class="w-full bg-surface-base border border-gold/12 rounded-xl px-4 py-3 text-gold-pale font-body text-sm placeholder-gold-pale/25" placeholder="+34 ...">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <div>
+              <label class="block text-[10px] tracking-[0.15em] uppercase text-gold-pale/50 font-body mb-2">Email</label>
+              <input type="email" class="w-full bg-surface-base border border-gold/12 rounded-xl px-4 py-3 text-gold-pale font-body text-sm placeholder-gold-pale/25" placeholder="email@example.com">
+            </div>
+            <div>
+              <label class="block text-[10px] tracking-[0.15em] uppercase text-gold-pale/50 font-body mb-2">Service</label>
+              <select class="w-full bg-surface-base border border-gold/12 rounded-xl px-4 py-3 text-gold-pale font-body text-sm appearance-none cursor-pointer">
+                <option value="">Select a service...</option>
+                <option>Tantric Massage (Shiva)</option>
+                <option>Shakti Massage</option>
+                <option>Couples Massage</option>
+                <option>Dance of Energies</option>
+                <option>Thai Massage (Three-in-One)</option>
+                <option>BDSM Experience</option>
+                <option>Foot Massage</option>
+                <option>Sauna & Spa</option>
+                <option>Private Party</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <div>
+              <label class="block text-[10px] tracking-[0.15em] uppercase text-gold-pale/50 font-body mb-2">Preferred Date</label>
+              <input type="date" class="w-full bg-surface-base border border-gold/12 rounded-xl px-4 py-3 text-gold-pale font-body text-sm">
+            </div>
+            <div>
+              <label class="block text-[10px] tracking-[0.15em] uppercase text-gold-pale/50 font-body mb-2">Preferred Time</label>
+              <input type="time" class="w-full bg-surface-base border border-gold/12 rounded-xl px-4 py-3 text-gold-pale font-body text-sm">
+            </div>
+          </div>
+          <div class="mb-6">
+            <label class="block text-[10px] tracking-[0.15em] uppercase text-gold-pale/50 font-body mb-2">Notes</label>
+            <textarea rows="3" class="w-full bg-surface-base border border-gold/12 rounded-xl px-4 py-3 text-gold-pale font-body text-sm placeholder-gold-pale/25 resize-none" placeholder="Special requests..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full py-4 text-xs tracking-[0.18em] uppercase font-body font-semibold text-white rounded-full">Request Booking</button>
+          <p class="text-center text-xs text-gold-pale/35 mt-4 font-body">Or call <a href="tel:+34663537663" class="text-copper hover:text-copper-light transition-colors duration-300">+34 663 537 663</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVENTS CALENDAR ===== -->
+<section id="events" class="py-24 sm:py-32 bg-glow">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-16 reveal">
+      <p class="text-copper text-xs tracking-[0.3em] uppercase font-body mb-3">Upcoming</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-gold-light font-light mb-5">Events Calendar</h2>
+      <div class="sep"><div class="sep-dot"></div></div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal">
+      <div class="calendar-card bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/photo_16_2026-06-18_12-22-32.jpg" alt="Summer Tantra Night" class="w-full h-full object-cover">
+          <div class="absolute top-3 left-3 bg-crimson/90 px-3 py-1 rounded-full"><span class="text-[10px] text-white font-body tracking-wider uppercase">Fri</span></div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] text-copper font-body tracking-wider mb-1">June 27, 2026</p>
+          <h4 class="font-display text-lg text-gold-light mb-2">Summer Tantra Night</h4>
+          <p class="text-[11px] text-gold-pale/45 font-body mb-3">An evening of connection, breathwork and tantric rituals.</p>
+          <span class="text-copper font-display text-base">&euro;120</span>
+        </div>
+      </div>
+      <div class="calendar-card bg-surface-card rounded-[20px] overflow-hidden border border-gold/8 stagger-1">
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/photo_17_2026-06-18_12-22-32.jpg" alt="Couples Retreat" class="w-full h-full object-cover">
+          <div class="absolute top-3 left-3 bg-crimson/90 px-3 py-1 rounded-full"><span class="text-[10px] text-white font-body tracking-wider uppercase">Sat</span></div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] text-copper font-body tracking-wider mb-1">July 5, 2026</p>
+          <h4 class="font-display text-lg text-gold-light mb-2">Couples Retreat</h4>
+          <p class="text-[11px] text-gold-pale/45 font-body mb-3">A full-day experience for couples seeking deeper intimacy.</p>
+          <span class="text-copper font-display text-base">&euro;350</span>
+        </div>
+      </div>
+      <div class="calendar-card bg-surface-card rounded-[20px] overflow-hidden border border-gold/8 stagger-2">
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/photo_20_2026-06-18_12-22-32.jpg" alt="Tea & Meditation" class="w-full h-full object-cover">
+          <div class="absolute top-3 left-3 bg-crimson/90 px-3 py-1 rounded-full"><span class="text-[10px] text-white font-body tracking-wider uppercase">Sun</span></div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] text-copper font-body tracking-wider mb-1">July 12, 2026</p>
+          <h4 class="font-display text-lg text-gold-light mb-2">Tea & Meditation</h4>
+          <p class="text-[11px] text-gold-pale/45 font-body mb-3">Tea ceremony with guided meditation and light massage.</p>
+          <span class="text-copper font-display text-base">&euro;60</span>
+        </div>
+      </div>
+      <div class="calendar-card bg-surface-card rounded-[20px] overflow-hidden border border-gold/8 stagger-3">
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/photo_21_2026-06-18_12-22-32.jpg" alt="Midsummer Celebration" class="w-full h-full object-cover">
+          <div class="absolute top-3 left-3 bg-crimson/90 px-3 py-1 rounded-full"><span class="text-[10px] text-white font-body tracking-wider uppercase">Sat</span></div>
+        </div>
+        <div class="p-5">
+          <p class="text-[10px] text-copper font-body tracking-wider mb-1">July 19, 2026</p>
+          <h4 class="font-display text-lg text-gold-light mb-2">Midsummer Celebration</h4>
+          <p class="text-[11px] text-gold-pale/45 font-body mb-3">An exclusive private party. Limited capacity.</p>
+          <span class="text-copper font-display text-base">&euro;180</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="py-24 sm:py-32 bg-glow-alt">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-16 reveal">
+      <p class="text-copper text-xs tracking-[0.3em] uppercase font-body mb-3">Visual Journey</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-gold-light font-light mb-5">Gallery</h2>
+      <div class="sep"><div class="sep-dot"></div></div>
+    </div>
+    <!-- Masonry-style grid -->
+    <div class="columns-2 md:columns-3 lg:columns-4 gap-4 reveal">
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img,video').src || this.querySelector('video').querySelector('source').src)">
+        <img src="photo content/photo_1_2026-06-18_12-23-49.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_9_2026-06-18_12-22-32.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_23_2026-06-18_12-22-32.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden video-wrap">
+        <video autoplay muted loop playsinline class="w-full object-cover rounded-[18px]"><source src="photo content/IMG_5671.MP4" type="video/mp4"></video>
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_10_2026-06-18_12-22-32.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_2_2026-06-18_12-23-49.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_13_2026-06-18_12-22-32.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_27_2026-06-18_12-22-32.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_3_2026-06-18_12-23-49.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_11_2026-06-18_12-22-32.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_29_2026-06-18_12-22-32.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_7_2026-06-18_12-23-49.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_8_2026-06-18_12-23-49.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_26_2026-06-18_12-22-32.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_4_2026-06-18_12-23-49.jpg" alt="" class="w-full object-cover">
+      </div>
+      <div class="mb-4 rounded-[18px] overflow-hidden img-hover cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+        <img src="photo content/photo_9_2026-06-18_12-23-49.jpg" alt="" class="w-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" class="py-24 sm:py-32 bg-glow">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-16 reveal">
+      <p class="text-copper text-xs tracking-[0.3em] uppercase font-body mb-3">Testimonials</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-gold-light font-light mb-5">What Our Guests Say</h2>
+      <div class="sep"><div class="sep-dot"></div></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+      <div class="review-card bg-surface-card rounded-[20px] p-7 border border-gold/8">
+        <div class="flex gap-1 mb-4">
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-sm text-gold-pale/65 font-body italic leading-relaxed mb-5">"An absolutely transformative experience. The atmosphere, the skill of the masseuse — everything was beyond my expectations. I left feeling like a completely different person."</p>
+        <div class="border-t border-gold/8 pt-4"><p class="font-display text-gold-light">Marco R.</p><p class="text-[10px] text-gold-pale/35 font-body">Barcelona, Spain</p></div>
+      </div>
+      <div class="review-card bg-surface-card rounded-[20px] p-7 border border-gold/8 stagger-1">
+        <div class="flex gap-1 mb-4">
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-sm text-gold-pale/65 font-body italic leading-relaxed mb-5">"My partner and I tried the couples massage and it was truly magical. We left feeling more connected than ever. The therapists were incredibly professional and attentive."</p>
+        <div class="border-t border-gold/8 pt-4"><p class="font-display text-gold-light">Elena & David</p><p class="text-[10px] text-gold-pale/35 font-body">Munich, Germany</p></div>
+      </div>
+      <div class="review-card bg-surface-card rounded-[20px] p-7 border border-gold/8 stagger-2">
+        <div class="flex gap-1 mb-4">
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-copper" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-sm text-gold-pale/65 font-body italic leading-relaxed mb-5">"The Thai massage was unlike anything I've experienced. The combination of techniques left me completely renewed. A hidden gem near Barcelona — I'll be back."</p>
+        <div class="border-t border-gold/8 pt-4"><p class="font-display text-gold-light">James W.</p><p class="text-[10px] text-gold-pale/35 font-body">London, UK</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STAFF ===== -->
+<section id="staff" class="py-24 sm:py-32 bg-glow-alt">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-16 reveal">
+      <p class="text-copper text-xs tracking-[0.3em] uppercase font-body mb-3">Meet the Team</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-gold-light font-light mb-5">Our Therapists</h2>
+      <div class="sep"><div class="sep-dot"></div></div>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7 reveal">
+      <div class="staff-card text-center">
+        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-4 border border-gold/8">
+          <img src="photo content/photo_4_2026-06-18_12-22-32.jpg" alt="Kati" class="w-full h-full object-cover">
+        </div>
+        <h4 class="font-display text-xl text-gold-light">Kati</h4>
+        <p class="text-[10px] text-copper font-body tracking-wider uppercase mt-1">Tantric Specialist</p>
+      </div>
+      <div class="staff-card text-center stagger-1">
+        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-4 border border-gold/8">
+          <img src="photo content/photo_5_2026-06-18_12-23-49.jpg" alt="Eva" class="w-full h-full object-cover">
+        </div>
+        <h4 class="font-display text-xl text-gold-light">Eva</h4>
+        <p class="text-[10px] text-copper font-body tracking-wider uppercase mt-1">Thai & Erotic Massage</p>
+      </div>
+      <div class="staff-card text-center stagger-2">
+        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-4 border border-gold/8">
+          <img src="photo content/photo_10_2026-06-18_12-23-49.jpg" alt="Sofia" class="w-full h-full object-cover">
+        </div>
+        <h4 class="font-display text-xl text-gold-light">Sofia</h4>
+        <p class="text-[10px] text-copper font-body tracking-wider uppercase mt-1">Dance of Energies</p>
+      </div>
+      <div class="staff-card text-center stagger-3">
+        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-4 border border-gold/8">
+          <img src="photo content/photo_28_2026-06-18_12-22-32.jpg" alt="Mila" class="w-full h-full object-cover">
+        </div>
+        <h4 class="font-display text-xl text-gold-light">Mila</h4>
+        <p class="text-[10px] text-copper font-body tracking-wider uppercase mt-1">Shakti & Couples</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECONDARY BOOKING (video background) ===== -->
+<section class="py-28 sm:py-36 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-25">
+      <source src="photo content/IMG_5669.MP4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-r from-surface-base via-surface-base/75 to-surface-base"></div>
+    <div class="absolute inset-0 bg-glow"></div>
+  </div>
+  <div class="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 text-center reveal">
+    <img src="fwd/LOGOtANTRA.png" alt="" class="w-16 h-16 mx-auto mb-6 opacity-60">
+    <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl text-gold-light font-light mb-5 leading-[1.05]">Begin Your Journey</h2>
+    <p class="font-body text-sm text-gold-pale/50 max-w-md mx-auto mb-10 leading-relaxed">
+      Whether you seek deep relaxation, spiritual awakening, or sensual discovery — our experienced
+      therapists will guide you through a personalized experience.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="#booking" class="btn-primary px-9 py-3.5 text-xs tracking-[0.18em] uppercase font-body font-semibold text-white rounded-full">Book Now</a>
+      <a href="https://wa.me/34663537663" target="_blank" rel="noopener" class="btn-outline px-9 py-3.5 text-xs tracking-[0.18em] uppercase font-body font-semibold rounded-full">WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="contact" class="py-16 sm:py-20 bg-surface-elevated border-t border-gold/8">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-14">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <img src="fwd/LOGOtANTRA.png" alt="Mundo de Tantra" class="w-11 h-11">
+          <div>
+            <p class="font-display text-lg text-gold-light tracking-wider">Mundo de Tantra</p>
+            <p class="text-[10px] text-gold-pale/35 font-body tracking-wider">Relax Center</p>
+          </div>
+        </div>
+        <p class="text-xs text-gold-pale/45 font-body leading-relaxed mb-5">
+          A sanctuary for holistic massage with elements of tantra, taoism, and breathwork.
+          Located in Sitges, Barcelona.
+        </p>
+        <div class="flex gap-2">
+          <button class="lang-btn active text-[10px] border border-gold/15 px-2.5 py-1 tracking-wider uppercase font-body text-gold-pale/60" data-lang="en">EN</button>
+          <button class="lang-btn text-[10px] border border-gold/15 px-2.5 py-1 tracking-wider uppercase font-body text-gold-pale/30" data-lang="es">ES</button>
+          <button class="lang-btn text-[10px] border border-gold/15 px-2.5 py-1 tracking-wider uppercase font-body text-gold-pale/30" data-lang="ru">RU</button>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-display text-lg text-gold-light mb-5">Contact</h4>
+        <div class="space-y-4">
+          <div><p class="text-[10px] text-gold-pale/35 font-body tracking-wider uppercase mb-1">Phone / WhatsApp</p><a href="tel:+34663537663" class="text-copper hover:text-copper-light text-sm font-body transition-colors duration-300">+34 663 537 663</a></div>
+          <div><p class="text-[10px] text-gold-pale/35 font-body tracking-wider uppercase mb-1">Address</p><p class="text-xs text-gold-pale/50 font-body">Cami de Can Dori, 46<br>Urb. California, Canyelles<br>Cataluna, Spain</p></div>
+          <div><p class="text-[10px] text-gold-pale/35 font-body tracking-wider uppercase mb-1">Hours</p><p class="text-xs text-gold-pale/50 font-body">Daily: 11:00 — 23:00<br>By appointment</p></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-display text-lg text-gold-light mb-5">Quick Links</h4>
+        <nav class="space-y-2.5">
+          <a href="#services" class="block text-xs text-gold-pale/45 hover:text-copper font-body transition-colors duration-300">Our Services</a>
+          <a href="#booking" class="block text-xs text-gold-pale/45 hover:text-copper font-body transition-colors duration-300">Book a Session</a>
+          <a href="#events" class="block text-xs text-gold-pale/45 hover:text-copper font-body transition-colors duration-300">Events Calendar</a>
+          <a href="#gallery" class="block text-xs text-gold-pale/45 hover:text-copper font-body transition-colors duration-300">Photo Gallery</a>
+          <a href="#reviews" class="block text-xs text-gold-pale/45 hover:text-copper font-body transition-colors duration-300">Guest Reviews</a>
+          <a href="#staff" class="block text-xs text-gold-pale/45 hover:text-copper font-body transition-colors duration-300">Our Therapists</a>
+        </nav>
+      </div>
+    </div>
+    <div class="border-t border-gold/8 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-[10px] text-gold-pale/25 font-body">&copy; 2026 Mundo de Tantra. All rights reserved.</p>
+      <div class="flex gap-5">
+        <a href="#" class="text-[10px] text-gold-pale/25 hover:text-copper font-body transition-colors duration-300">Privacy Policy</a>
+        <a href="#" class="text-[10px] text-gold-pale/25 hover:text-copper font-body transition-colors duration-300">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="absolute top-5 right-5 text-gold/50 hover:text-gold text-3xl font-light z-10 transition-colors duration-300" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="Gallery image">
+</div>
+
+<script>
+function openLightbox(src) {
+  if (!src) return;
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('v');
+      obs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+
+// Hero service slider
+const heroSlides = [
+  { img: 'photo content/photo_22_2026-06-18_12-22-32.jpg', title: 'Tantric Massage', desc: 'Sacred touch ritual for deep healing and connection.' },
+  { img: 'photo content/photo_14_2026-06-18_12-22-32.jpg', title: 'Couples Massage', desc: 'A shared journey of intimacy for partners.' },
+  { img: 'photo content/photo_19_2026-06-18_12-22-32.jpg', title: 'Dance of Energies', desc: 'Feminine and masculine energies in harmony.' },
+  { img: 'photo content/photo_12_2026-06-18_12-22-32.jpg', title: 'Shakti Massage', desc: 'Gentle healing strokes awakening the heart.' },
+  { img: 'photo content/photo_28_2026-06-18_12-22-32.jpg', title: 'Thai Massage', desc: 'Three-in-one classical, erotic and Thai fusion.' },
+];
+let heroIdx = 0;
+function heroSlide(dir) {
+  heroIdx = (heroIdx + dir + heroSlides.length) % heroSlides.length;
+  const s = heroSlides[heroIdx];
+  const img = document.getElementById('sliderImg');
+  const title = document.getElementById('sliderTitle');
+  const desc = document.getElementById('sliderDesc');
+  img.style.opacity = '0'; img.style.transform = 'scale(0.92)';
+  title.style.opacity = '0'; title.style.transform = 'translateX(10px)';
+  desc.style.opacity = '0'; desc.style.transform = 'translateX(10px)';
+  setTimeout(() => {
+    img.src = s.img; title.textContent = s.title; desc.textContent = s.desc;
+    img.style.opacity = '1'; img.style.transform = 'scale(1)';
+    title.style.opacity = '1'; title.style.transform = 'translateX(0)';
+    desc.style.opacity = '1'; desc.style.transform = 'translateX(0)';
+  }, 250);
+}
+setInterval(() => heroSlide(1), 5000);
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.lang-btn').forEach(b => { b.classList.remove('active'); b.classList.add('text-gold-pale/40'); });
+    document.querySelectorAll(`[data-lang="${btn.dataset.lang}"]`).forEach(b => { b.classList.add('active'); b.classList.remove('text-gold-pale/40'); });
+  });
+});
+document.querySelectorAll('#mobMenu a').forEach(link => {
+  link.addEventListener('click', () => document.getElementById('mobMenu').classList.remove('open'));
+});
+</script>
+</body>
+</html>
