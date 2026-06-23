@@ -248,9 +248,7 @@
 <section class="relative h-screen min-h-[700px] overflow-hidden">
   <!-- Full-bleed video background -->
   <div class="absolute inset-0 z-0">
-    <video autoplay muted loop playsinline class="w-full h-full object-cover">
-      <source src="photo content/IMG_5662.MP4" type="video/mp4">
-    </video>
+    <img src="photo content/hero-bg.webp" alt="" class="w-full h-full object-cover">
     <div class="absolute inset-0 bg-gradient-to-t from-surface-base/80 via-surface-base/20 to-surface-base/10"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-surface-base/50 to-transparent"></div>
   </div>
@@ -330,7 +328,7 @@
   <div class="max-w-[1100px] mx-auto px-5 sm:px-8">
     <!-- Centered description paragraph -->
     <div class="text-center mb-16 reveal">
-      <p class="font-display text-[22px] sm:text-[28px] lg:text-[32px] text-gold-pale/80 leading-[1.6] font-light">
+      <p class="font-display text-[22px] sm:text-[28px] lg:text-[32px] text-gold-pale/80 leading-[1.3] font-light">
         Our tantra and relaxation studio is dedicated to helping you unwind,
         reconnect, and awaken your inner energy. Through personalized rituals,
         expert techniques, and a sensual atmosphere, we create experiences
@@ -379,86 +377,105 @@
       <div class="sep"><div class="sep-dot"></div></div>
     </div>
 
-    <!-- Service 1: Tantric - image left -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 reveal">
-      <div class="rounded-[24px] overflow-hidden img-hover aspect-[4/3]">
-        <img src="photo content/thai-massage.jpg" alt="Tantric Massage" class="w-full h-full object-cover">
-      </div>
-      <div>
-        <span class="text-copper text-xs tracking-[0.3em] uppercase font-body">01</span>
-        <h3 class="font-display text-3xl sm:text-4xl text-gold-light font-light mt-2 mb-4">Tantric Massage</h3>
-        <p class="text-xs text-gold-pale/40 tracking-wider uppercase font-body mb-4">Shiva &middot; For Men &middot; from &euro;150</p>
-        <p class="font-body text-sm text-gold-pale/55 leading-relaxed mb-6">
-          A very sensual and intimate massage that releases blockages and tensions. The affectionate
-          way this massage is given opens up the heart and gives the ability to love deeply. Through
-          this massage you can learn to spread sexual energy into your whole body.
-        </p>
-        <a href="#booking" class="btn-outline inline-block px-7 py-3 text-xs tracking-[0.15em] uppercase font-body rounded-full">Book Now</a>
-      </div>
-    </div>
+    <!-- Services grid — uniform cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 reveal">
 
-    <!-- Service 2: Couples - image right -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 reveal">
-      <div class="order-2 lg:order-1">
-        <span class="text-copper text-xs tracking-[0.3em] uppercase font-body">02</span>
-        <h3 class="font-display text-3xl sm:text-4xl text-gold-light font-light mt-2 mb-4">Couples Massage</h3>
-        <p class="text-xs text-gold-pale/40 tracking-wider uppercase font-body mb-4">Shakti + Shiva &middot; from &euro;300</p>
-        <p class="font-body text-sm text-gold-pale/55 leading-relaxed mb-6">
-          Discover your partner anew. Two therapists will massage you simultaneously in one room.
-          The common experience may be unique and very deep. You will be surprised how you now
-          perceive each other — your hearts prepared to give and receive mutual love.
-        </p>
-        <a href="#booking" class="btn-outline inline-block px-7 py-3 text-xs tracking-[0.15em] uppercase font-body rounded-full">Book Now</a>
-      </div>
-      <div class="order-1 lg:order-2 rounded-[24px] overflow-hidden img-hover aspect-[4/3]">
-        <img src="photo content/couple-massage.jpg" alt="Couples Massage" class="w-full h-full object-cover">
-      </div>
-    </div>
-
-    <!-- Service 3: Dance of Energies - image left -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 reveal">
-      <div class="rounded-[24px] overflow-hidden img-hover aspect-[4/3]">
-        <img src="photo content/dance-of-energies.jpg" alt="Dance of Energies" class="w-full h-full object-cover">
-      </div>
-      <div>
-        <span class="text-copper text-xs tracking-[0.3em] uppercase font-body">03</span>
-        <h3 class="font-display text-3xl sm:text-4xl text-gold-light font-light mt-2 mb-4">Dance of Energies</h3>
-        <p class="text-xs text-gold-pale/40 tracking-wider uppercase font-body mb-4">Tantric Techniques &middot; from &euro;180</p>
-        <p class="font-body text-sm text-gold-pale/55 leading-relaxed mb-6">
-          A sensual massage about the dance of feminine and masculine energies. Based on tantric
-          techniques with renewed energy and a new state of mind. It's about the states that arise
-          from accepting your nature and the laws of energy movement.
-        </p>
-        <a href="#booking" class="btn-outline inline-block px-7 py-3 text-xs tracking-[0.15em] uppercase font-body rounded-full">Book Now</a>
-      </div>
-    </div>
-
-    <!-- Service cards grid: remaining services -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
       <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
-        <div class="aspect-[4/3] img-hover"><img src="photo content/shakti-massage.jpg" alt="Shakti Massage" class="w-full h-full object-cover"></div>
-        <div class="p-6">
-          <h4 class="font-display text-xl text-gold-light mb-1">Shakti Massage</h4>
-          <p class="text-[10px] text-gold-pale/40 tracking-wider uppercase font-body mb-3">For Women &middot; from &euro;150</p>
-          <p class="text-xs text-gold-pale/50 font-body leading-relaxed">Light-as-a-feather strokes awakening heart energies. Deeply relaxing, deeply healing.</p>
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/thai-massage.jpg" alt="Tantric Massage" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-base/60 to-transparent"></div>
+        </div>
+        <div class="p-6 sm:p-7">
+          <p class="text-[11px] text-copper tracking-[0.2em] uppercase font-body mb-2">Shiva &middot; For Men</p>
+          <h4 class="font-display text-2xl sm:text-[26px] text-gold-light mb-3">Tantric Massage</h4>
+          <p class="text-[13px] sm:text-sm text-gold-pale/55 font-body leading-relaxed mb-5">A sensual and intimate massage that releases blockages and tensions, opening up the heart and spreading energy through your whole body.</p>
+          <div class="flex items-center justify-between">
+            <span class="font-display text-2xl text-copper">from &euro;150</span>
+            <a href="#booking" class="btn-outline px-5 py-2.5 text-[11px] tracking-[0.12em] uppercase font-body rounded-full">Book Now</a>
+          </div>
         </div>
       </div>
+
       <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
-        <div class="aspect-[4/3] img-hover"><img src="photo content/thai-massage-2.jpg" alt="Thai Massage" class="w-full h-full object-cover"></div>
-        <div class="p-6">
-          <h4 class="font-display text-xl text-gold-light mb-1">Thai Massage</h4>
-          <p class="text-[10px] text-gold-pale/40 tracking-wider uppercase font-body mb-3">Three-in-One &middot; 90 min &middot; &euro;150</p>
-          <p class="text-xs text-gold-pale/50 font-body leading-relaxed">Classical, erotic and original Thai massage combined into one 90-minute experience.</p>
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/shakti-massage.jpg" alt="Shakti Massage" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-base/60 to-transparent"></div>
+        </div>
+        <div class="p-6 sm:p-7">
+          <p class="text-[11px] text-copper tracking-[0.2em] uppercase font-body mb-2">Shakti &middot; For Women</p>
+          <h4 class="font-display text-2xl sm:text-[26px] text-gold-light mb-3">Shakti Massage</h4>
+          <p class="text-[13px] sm:text-sm text-gold-pale/55 font-body leading-relaxed mb-5">Light-as-a-feather strokes awakening heart energies. Deeply relaxing, deeply healing — a ritual of feminine renewal.</p>
+          <div class="flex items-center justify-between">
+            <span class="font-display text-2xl text-copper">from &euro;150</span>
+            <a href="#booking" class="btn-outline px-5 py-2.5 text-[11px] tracking-[0.12em] uppercase font-body rounded-full">Book Now</a>
+          </div>
         </div>
       </div>
+
       <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
-        <div class="aspect-[4/3] img-hover"><img src="photo content/sauna-spa.jpg" alt="Sauna & Spa" class="w-full h-full object-cover"></div>
-        <div class="p-6">
-          <h4 class="font-display text-xl text-gold-light mb-1">Sauna & Spa</h4>
-          <p class="text-[10px] text-gold-pale/40 tracking-wider uppercase font-body mb-3">Jacuzzi &middot; Tea Ceremony &middot; from &euro;80</p>
-          <p class="text-xs text-gold-pale/50 font-body leading-relaxed">Complete relaxation with sauna, jacuzzi and traditional tea ceremony.</p>
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/couple-massage.jpg" alt="Couples Massage" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-base/60 to-transparent"></div>
+        </div>
+        <div class="p-6 sm:p-7">
+          <p class="text-[11px] text-copper tracking-[0.2em] uppercase font-body mb-2">Shakti + Shiva &middot; For Couples</p>
+          <h4 class="font-display text-2xl sm:text-[26px] text-gold-light mb-3">Couples Massage</h4>
+          <p class="text-[13px] sm:text-sm text-gold-pale/55 font-body leading-relaxed mb-5">Discover your partner anew. Two therapists massage you simultaneously — a shared journey that opens hearts to deeper love.</p>
+          <div class="flex items-center justify-between">
+            <span class="font-display text-2xl text-copper">from &euro;300</span>
+            <a href="#booking" class="btn-outline px-5 py-2.5 text-[11px] tracking-[0.12em] uppercase font-body rounded-full">Book Now</a>
+          </div>
         </div>
       </div>
+
+      <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/dance-of-energies.jpg" alt="Dance of Energies" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-base/60 to-transparent"></div>
+        </div>
+        <div class="p-6 sm:p-7">
+          <p class="text-[11px] text-copper tracking-[0.2em] uppercase font-body mb-2">Tantric Techniques</p>
+          <h4 class="font-display text-2xl sm:text-[26px] text-gold-light mb-3">Dance of Energies</h4>
+          <p class="text-[13px] sm:text-sm text-gold-pale/55 font-body leading-relaxed mb-5">A sensual dance of feminine and masculine energies. Renewed state of mind through accepting your nature and energy flow.</p>
+          <div class="flex items-center justify-between">
+            <span class="font-display text-2xl text-copper">from &euro;180</span>
+            <a href="#booking" class="btn-outline px-5 py-2.5 text-[11px] tracking-[0.12em] uppercase font-body rounded-full">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/thai-massage-2.jpg" alt="Thai Massage" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-base/60 to-transparent"></div>
+        </div>
+        <div class="p-6 sm:p-7">
+          <p class="text-[11px] text-copper tracking-[0.2em] uppercase font-body mb-2">Three-in-One &middot; 90 min</p>
+          <h4 class="font-display text-2xl sm:text-[26px] text-gold-light mb-3">Thai Massage</h4>
+          <p class="text-[13px] sm:text-sm text-gold-pale/55 font-body leading-relaxed mb-5">Classical, erotic and original Thai massage combined into one 90-minute experience of total renewal.</p>
+          <div class="flex items-center justify-between">
+            <span class="font-display text-2xl text-copper">from &euro;150</span>
+            <a href="#booking" class="btn-outline px-5 py-2.5 text-[11px] tracking-[0.12em] uppercase font-body rounded-full">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-block bg-surface-card rounded-[20px] overflow-hidden border border-gold/8">
+        <div class="aspect-[4/3] img-hover relative">
+          <img src="photo content/sauna-spa.jpg" alt="Sauna & Spa" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-base/60 to-transparent"></div>
+        </div>
+        <div class="p-6 sm:p-7">
+          <p class="text-[11px] text-copper tracking-[0.2em] uppercase font-body mb-2">Jacuzzi &middot; Tea Ceremony</p>
+          <h4 class="font-display text-2xl sm:text-[26px] text-gold-light mb-3">Sauna & Spa</h4>
+          <p class="text-[13px] sm:text-sm text-gold-pale/55 font-body leading-relaxed mb-5">Complete relaxation with sauna, jacuzzi and traditional tea ceremony in a serene atmosphere.</p>
+          <div class="flex items-center justify-between">
+            <span class="font-display text-2xl text-copper">from &euro;80</span>
+            <a href="#booking" class="btn-outline px-5 py-2.5 text-[11px] tracking-[0.12em] uppercase font-body rounded-full">Book Now</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -846,11 +863,12 @@ document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right')
 
 // Hero service slider
 const heroSlides = [
-  { img: 'photo content/thai-massage.jpg', title: 'Tantric Massage', desc: 'Sacred touch ritual for deep healing and connection.' },
-  { img: 'photo content/couple-massage.jpg', title: 'Couples Massage', desc: 'A shared journey of intimacy for partners.' },
-  { img: 'photo content/dance-of-energies.jpg', title: 'Dance of Energies', desc: 'Feminine and masculine energies in harmony.' },
-  { img: 'photo content/shakti-massage.jpg', title: 'Shakti Massage', desc: 'Gentle healing strokes awakening the heart.' },
-  { img: 'photo content/thai-massage-2.jpg', title: 'Thai Massage', desc: 'Three-in-one classical, erotic and Thai fusion.' },
+  { img: 'photo content/thai-massage.jpg', title: 'Tantric Massage', desc: 'Sacred touch ritual for deep healing and connection.', price: 'from €150' },
+  { img: 'photo content/shakti-massage.jpg', title: 'Shakti Massage', desc: 'Gentle healing strokes awakening the heart.', price: 'from €150' },
+  { img: 'photo content/couple-massage.jpg', title: 'Couples Massage', desc: 'A shared journey of intimacy for partners.', price: 'from €300' },
+  { img: 'photo content/dance-of-energies.jpg', title: 'Dance of Energies', desc: 'Feminine and masculine energies in harmony.', price: 'from €180' },
+  { img: 'photo content/thai-massage-2.jpg', title: 'Thai Massage', desc: 'Three-in-one classical, erotic and Thai fusion.', price: 'from €150' },
+  { img: 'photo content/sauna-spa.jpg', title: 'Sauna & Spa', desc: 'Jacuzzi, sauna and traditional tea ceremony.', price: 'from €80' },
 ];
 let heroIdx = 0;
 function heroSlide(dir) {
