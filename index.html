@@ -142,7 +142,7 @@
     .lightbox img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 16px; }
 
     /* Mobile menu */
-    @media (max-width: 768px) {
+    @media (max-width: 1023px) {
       .mob-menu { display: none; }
       .mob-menu.open { display: flex; }
     }
@@ -206,7 +206,7 @@
         <span class="font-display text-gold-light text-base sm:text-lg tracking-[0.12em] uppercase">Tantra</span>
       </a>
       <!-- Nav center -->
-      <nav class="hidden md:flex items-center gap-8">
+      <nav class="hidden lg:flex items-center gap-8">
         <a href="#" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Home</a>
         <a href="#services" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Services</a>
         <a href="#events" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Events</a>
@@ -215,7 +215,7 @@
         <a href="#contact" class="nav-link text-[13px] tracking-wide text-gold-pale/80 font-body">Contact</a>
       </nav>
       <!-- CTA + lang right -->
-      <div class="hidden md:flex items-center gap-4">
+      <div class="hidden lg:flex items-center gap-4">
         <div class="flex items-center gap-1">
           <button class="lang-btn active text-[10px] border border-transparent px-1.5 py-0.5 tracking-wider uppercase font-body" data-lang="en">EN</button>
           <button class="lang-btn text-[10px] border border-transparent px-1.5 py-0.5 tracking-wider uppercase font-body text-gold-pale/40" data-lang="es">ES</button>
@@ -223,12 +223,12 @@
         </div>
         <a href="#booking" class="btn-outline px-6 py-2.5 text-[12px] tracking-[0.1em] uppercase font-body font-medium rounded-full">Book an Appointment</a>
       </div>
-      <button class="md:hidden hamburger flex flex-col gap-1.5 p-2" onclick="document.getElementById('mobMenu').classList.toggle('open')" aria-label="Menu">
+      <button class="lg:hidden hamburger flex flex-col gap-1.5 p-2" onclick="document.getElementById('mobMenu').classList.toggle('open')" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
-  <div id="mobMenu" class="mob-menu md:hidden flex-col bg-surface-elevated/95 backdrop-blur-xl border-t border-gold/8 px-6 py-5 gap-3">
+  <div id="mobMenu" class="mob-menu lg:hidden flex-col bg-surface-elevated/95 backdrop-blur-xl border-t border-gold/8 px-6 py-5 gap-3">
     <a href="#services" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Services</a>
     <a href="#booking" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Booking</a>
     <a href="#events" class="nav-link text-xs tracking-[0.18em] uppercase text-gold-pale/70 font-body py-2">Events</a>
@@ -245,7 +245,7 @@
 </header>
 
 <!-- ===== HERO ===== -->
-<section class="relative h-screen min-h-[700px] overflow-hidden">
+<section class="relative h-screen min-h-[600px] overflow-hidden">
   <!-- Full-bleed video background -->
   <div class="absolute inset-0 z-0">
     <img src="photo content/hero-bg.webp" alt="" class="w-full h-full object-cover">
@@ -282,8 +282,8 @@
           </div>
         </div>
         <!-- Main heading -->
-        <h1 class="font-display text-[44px] sm:text-[56px] lg:text-[68px] xl:text-[76px] font-light text-white leading-[1.0] mb-4 tracking-tight">
-          Your Sensual Ritual of<br>The Body and Mind
+        <h1 class="font-display text-[32px] sm:text-[48px] lg:text-[68px] xl:text-[76px] font-light text-white leading-[1.05] mb-4 tracking-tight">
+          Your Sensual Ritual<br>of The Body and Mind
         </h1>
         <p class="text-[14px] text-gold-pale/55 font-body tracking-wide">A New Dimension of Wellness</p>
       </div>
@@ -724,34 +724,24 @@
       <h2 class="font-display text-4xl sm:text-5xl text-gold-light font-light mb-5">Our Therapists</h2>
       <div class="sep"><div class="sep-dot"></div></div>
     </div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7 reveal">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto reveal">
       <div class="staff-card text-center">
-        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-4 border border-gold/8">
-          <img src="photo content/photo_4_2026-06-18_12-22-32.jpg" alt="Kati" class="w-full h-full object-cover">
+        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-5 border border-gold/8 video-wrap">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <source src="photo content/staff-alina.mp4" type="video/mp4">
+          </video>
         </div>
-        <h4 class="font-display text-xl text-gold-light">Kati</h4>
-        <p class="text-[10px] text-copper font-body tracking-wider uppercase mt-1">Tantric Specialist</p>
+        <h4 class="font-display text-2xl text-gold-light">Alina</h4>
+        <p class="text-[11px] text-copper font-body tracking-wider uppercase mt-1.5">Massage Therapist</p>
       </div>
       <div class="staff-card text-center stagger-1">
-        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-4 border border-gold/8">
-          <img src="photo content/photo_5_2026-06-18_12-23-49.jpg" alt="Eva" class="w-full h-full object-cover">
+        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-5 border border-gold/8 video-wrap">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover">
+            <source src="photo content/staff-nataly.mp4" type="video/mp4">
+          </video>
         </div>
-        <h4 class="font-display text-xl text-gold-light">Eva</h4>
-        <p class="text-[10px] text-copper font-body tracking-wider uppercase mt-1">Thai & Erotic Massage</p>
-      </div>
-      <div class="staff-card text-center stagger-2">
-        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-4 border border-gold/8">
-          <img src="photo content/photo_10_2026-06-18_12-23-49.jpg" alt="Sofia" class="w-full h-full object-cover">
-        </div>
-        <h4 class="font-display text-xl text-gold-light">Sofia</h4>
-        <p class="text-[10px] text-copper font-body tracking-wider uppercase mt-1">Dance of Energies</p>
-      </div>
-      <div class="staff-card text-center stagger-3">
-        <div class="rounded-[22px] overflow-hidden img-hover aspect-[3/4] mb-4 border border-gold/8">
-          <img src="photo content/photo_28_2026-06-18_12-22-32.jpg" alt="Mila" class="w-full h-full object-cover">
-        </div>
-        <h4 class="font-display text-xl text-gold-light">Mila</h4>
-        <p class="text-[10px] text-copper font-body tracking-wider uppercase mt-1">Shakti & Couples</p>
+        <h4 class="font-display text-2xl text-gold-light">Nataly</h4>
+        <p class="text-[11px] text-copper font-body tracking-wider uppercase mt-1.5">Massage Therapist</p>
       </div>
     </div>
   </div>
@@ -761,7 +751,7 @@
 <section class="py-28 sm:py-36 relative overflow-hidden">
   <div class="absolute inset-0">
     <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-25">
-      <source src="photo content/IMG_5669.MP4" type="video/mp4">
+      <source src="photo content/staff-nataly.mp4" type="video/mp4">
     </video>
     <div class="absolute inset-0 bg-gradient-to-r from-surface-base via-surface-base/75 to-surface-base"></div>
     <div class="absolute inset-0 bg-glow"></div>
