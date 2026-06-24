@@ -4,7 +4,8 @@
 - **Name:** Relax Center "Mundo de Tantra"
 - **Type:** Tantra & massage relaxation studio
 - **Location:** Cami de Can Dori, 46, Urb. California, Canyelles, Cataluna, Spain (Sitges area, Barcelona province)
-- **Phone/WhatsApp:** +34 663 537 663
+- **Phone/WhatsApp:** +34 663 346 742
+- **Email:** euromodels@seznam.cz
 
 ## Brand
 - **Logo:** Gold Nataraja (dancing Shiva in circle of flames) — `fwd/LOGOtANTRA.png`
